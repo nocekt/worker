@@ -15,3 +15,19 @@ self.addEventListener('install', function(event) {
       })
   );
 });
+
+self.addEventListener('fetch', function(event) {
+  console.log('Fetch: ' + event.request);
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+	      console.log("Fetched from cache")
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
+  );
+});
