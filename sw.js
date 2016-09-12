@@ -1,6 +1,6 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
-  '/worker',
+  '/worker/',
   '/worker/styles/main.css',
   '/worker/scripts/main.js'
 ];
@@ -17,13 +17,13 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('Fetch: ' + event.request);
+  console.log('Fetch: ' + event.request.url);
   event.respondWith(
     caches.match(event.request)
       .then(function(response) {
         // Cache hit - return response
         if (response) {
-	      console.log("Fetched from cache")
+	      console.log("Fetched: " + response.url)
           return response;
         }
         return fetch(event.request);
