@@ -1,5 +1,5 @@
-window.document.onload = function(e){
+window.onload = function(e){
 	setTimeout(function(){ 
-		document.body.style.backgroundColor = "red";
-	}, 1000);
+		document.body.style.backgroundColor = "orange";
+	}, 2000);
 }
