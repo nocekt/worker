@@ -20,7 +20,7 @@ self.addEventListener('fetch', function(event) {
 	event.respondWith(
 		caches.match(event.request).then(function(resp) {
 		if(resp) {
-			console.log("Fetched: " + response.url);
+			console.log("Fetched: " + resp.url);
 			return resp;
 		}
 		fetch(event.request).then(function(response) {
