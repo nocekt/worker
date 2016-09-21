@@ -1,18 +1,8 @@
 <html>
 <head>
-	<script>
-		if ('serviceWorker' in navigator) {
-		  navigator.serviceWorker.register('./sw.js').then(function(registration) {
-			// Registration was successful
-			console.log('ServiceWorker registration successful with scope: ', registration.scope);
-		  }).catch(function(err) {
-			// registration failed :(
-			console.log('ServiceWorker registration failed: ', err);
-		  });
-		}
-	</script>
-	<link rel="stylesheet" href="./styles/main.css">
+	<script src="./scripts/sw-client.js"></script>
 	<script src="./scripts/main.js"></script>
+	<link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
 	test
