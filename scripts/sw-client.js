@@ -10,8 +10,8 @@ if ('serviceWorker' in navigator) {
 
 var update = location.search.split('update=')[1];
 if(update == true) {
-	alert(1);
+	console.log("Update needed.");
 }
 else {
-	alert(2);
+	console.log("Up to date.");
 }
