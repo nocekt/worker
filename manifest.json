@@ -1,0 +1,17 @@
+{
+  "short_name": "GetItDone",
+  "name": "Get it done!",
+  "icons": [
+    {
+      "src": "images/icon48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "images/icon96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    }
+  ],
+  "start_url": "index.html"
+}
