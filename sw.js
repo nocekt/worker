@@ -25,7 +25,7 @@ self.addEventListener('fetch', function(event) {
 			console.log("Service worker fetch event: served from cache - " + resp.url);
 			return resp;
 		}
-		fetch(file).then(function(response) {
+		return fetch(file).then(function(response) {
 			return caches.open(CACHE_NAME).then(function(cache) {
 				return cache.put(event.request, response.clone()).then(function() {
 					console.log("Service worker fetch event: downloaded -" + file);
