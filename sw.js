@@ -22,17 +22,17 @@ self.addEventListener('fetch', function(event) {
 	var file = event.request;
 	event.respondWith(caches.match(file).then(function(resp) {
 		if(resp) {
-			console.log("Service worker fetch event: served from cache - " + resp.url);
+			console.log("Service worker fetch event: served from cache - " + file.url);
 			return resp;
 		}
 		return fetch(file).then(function(response) {
 			return caches.open(CACHE_NAME).then(function(cache) {
 				return cache.put(event.request, response.clone()).then(function() {
-					console.log("Service worker fetch event: downloaded -" + file);
+					console.log("Service worker fetch event: downloaded -" + file.url);
 				});
 			});  
 		})
 	}).catch(function(e) {
-		console.log("Service worker fetch event: failed to download -  " + file);	
+		console.log("Service worker fetch event: failed to download -  " + file.url);
 	}));
 });
