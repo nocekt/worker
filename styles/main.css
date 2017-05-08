@@ -1,3 +1,38 @@
 body {
-	background: #abc;
+	/*background: #48e;*/
+	margin: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+.container {
+	display: inline-block;
+	width: 25%;
+}
+
+.task {
+	height: 0;
+    padding-bottom: 100%;
+	text-align: center;
+	position: relative;
+}
+
+.task span {
+	color: white;
+	text-transform: uppercase;
+	font: 1em/21px 'Montserrat', sans-serif;
+	position: absolute;
+	top: 50%;
+	margin-top: -1em;
+	left: 0;
+	right: 0;
+}
+
+.addImg {
+	position: absolute;
+	height: 75px;
+	bottom: 20px;
+	right: 20px;
 }
