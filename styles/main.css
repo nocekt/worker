@@ -9,7 +9,7 @@ body {
 
 .container {
 	display: inline-block;
-	width: 25%;
+	width: calc(100%  /3);
 }
 
 .task {
