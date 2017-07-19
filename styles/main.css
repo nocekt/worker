@@ -30,7 +30,8 @@ body {
 .addImg {
 	position: fixed;
 	z-index: 100;
-	height: 75px;
+	height: 50px;
 	bottom: 20px;
 	right: 20px;
+	opacity: 0.75;
 }

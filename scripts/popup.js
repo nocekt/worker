@@ -1,7 +1,7 @@
 "use strict";
 
 class Popup {
-    create(id, content) {
+    create(id, html) {
         var body = document.getElementsByTagName('body')[0];
 
         var popup = document.createElement('div');
@@ -11,7 +11,11 @@ class Popup {
         var overlay = document.createElement('div');
         overlay.classList.add('overlay');
         
-        popup.innerHTML = content;
+        var content = document.createElement('div');
+        content.classList.add('content');
+        content.innerHTML = html;
+
+        popup.appendChild(content);
         popup.appendChild(overlay);
         body.appendChild(popup);
     }

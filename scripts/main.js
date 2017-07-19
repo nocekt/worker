@@ -13,14 +13,14 @@ window.onload = function() {
 }
 
 function openTaskPopup() {
-	var content = '<div class="content"><input id="taskContent" type="text"/>'+
-	'<button onclick="addTask();"> confirm </button><button onclick="popupManager.remove(\'addTask\');"> cancel </button></div>';
+	var content = '<div><span>Create a new task.</span><br><input id="taskContent" type="text"/>'+
+	'<div><button onclick="addTask();"> confirm </button><button onclick="popupManager.remove(\'addTask\');"> cancel </button></div></div>';
 	popupManager.create("addTask", content);
 }
 
 function openRemovePopup(ev) {
-	var content = '<div class="content">Complete this task ?'+
-	'<button onclick="removeTask(\'' + ev.currentTarget.id + '\');"> confirm </button><button onclick="popupManager.remove(\'complete\');"> cancel </button></div>';
+	var content = '<div><span>Complete this task ?</span><br>'+
+	'<div><button onclick="removeTask(\'' + ev.currentTarget.id + '\');"> confirm </button><button onclick="popupManager.remove(\'complete\');"> cancel </button></div></div>';
 	popupManager.create("complete", content);
 }
 
@@ -42,7 +42,7 @@ function renderTask(data) {
 	var task = document.createElement("div");
 	task.classList.add('task');
 	task.id = data.id;
-	task.style.backgroundColor = colors[Math.round(Math.random()*21)];
+	task.style.backgroundColor = colors[Math.round(Math.random()*20)];
 	task.onclick = openRemovePopup;
 	task.appendChild(text);
 	
