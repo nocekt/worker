@@ -1,10 +1,7 @@
 body {
 	/*background: #48e;*/
 	margin: 0;
-}
-
-.hidden {
-	display: none;
+	position: relative;
 }
 
 .container {

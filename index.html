@@ -3,18 +3,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="manifest" href="./manifest.json">
 	<link rel="stylesheet" href="./styles/main.css">
+	<link rel="stylesheet" href="./styles/popup.css">
 	<script src="./scripts/sw-client.js"></script>
+	<script src="./scripts/popup.js"></script>
 	<script src="./scripts/database.js"></script>
 	<script src="./scripts/main.js"></script>
 </head>
 <body>
 	<div id="task-list">
-		<img src="./images/plus.png" class="addImg" onclick="navigate('create-task');">
-	</div>
-	<div id="create-task" class="hidden">
-		<input id="taskContent" type="text"/>
-		<button onclick="addTask(); navigate('task-list');"> confirm </button>
-		<button onclick="navigate('task-list');"> cancel </button>
+		<img src="./images/plus.png" class="addImg" onclick="openTaskPopup()">
 	</div>
 </body>
 </html>

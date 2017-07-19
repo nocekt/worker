@@ -2,6 +2,7 @@
 
 var database = new Database(["tasks", "fup"]);
 var colors = ["rgb(242, 38, 19)", "rgb(217, 30, 24)", "rgb(150, 40, 27)", "rgb(192, 57, 43)", "rgb(207, 0, 15)", "rgb(219, 10, 91)", "rgb(102, 51, 153)", "rgb(103, 65, 114)", "rgb(145, 61, 136)", "rgb(142, 68, 173)", "rgb(155, 89, 182)", "rgb(68, 108, 179)", "rgb(44, 62, 80)", "rgb(51, 110, 123)", "rgb(34, 49, 63)", "rgb(30, 139, 195)", "rgb(58, 83, 155)", "rgb(52, 73, 94)", "rgb(37, 116, 169)", "rgb(31, 58, 147)", "rgb(30, 130, 76)"];
+var popupManager = new Popup();
 
 window.onload = function() {
 	database.query("tasks", function(tasks) {
@@ -11,14 +12,16 @@ window.onload = function() {
 	});
 }
 
-function navigate(id) {
-	var screens = document.body.children;
-	for (var i=0; i < screens.length; i++) {
-		if(screens[i].id === id)
-			screens[i].classList.remove("hidden");
-		else
-			screens[i].classList.add("hidden");
-	}
+function openTaskPopup() {
+	var content = '<div class="content"><input id="taskContent" type="text"/>'+
+	'<button onclick="addTask();"> confirm </button><button onclick="popupManager.remove(\'addTask\');"> cancel </button></div>';
+	popupManager.create("addTask", content);
+}
+
+function openRemovePopup(ev) {
+	var content = '<div class="content">Complete this task ?'+
+	'<button onclick="removeTask(\'' + ev.currentTarget.id + '\');"> confirm </button><button onclick="popupManager.remove(\'complete\');"> cancel </button></div>';
+	popupManager.create("complete", content);
 }
 
 function addTask() {
@@ -28,6 +31,7 @@ function addTask() {
 		text: input.value
 	}
 	database.insert('tasks', data);
+	popupManager.remove("addTask");
 	renderTask(data);
 }
 
@@ -37,13 +41,22 @@ function renderTask(data) {
 
 	var task = document.createElement("div");
 	task.classList.add('task');
+	task.id = data.id;
 	task.style.backgroundColor = colors[Math.round(Math.random()*21)];
+	task.onclick = openRemovePopup;
 	task.appendChild(text);
-
+	
 	var container = document.createElement("div");
 	container.classList.add('container');
 	container.appendChild(task);
 
 	var list = document.getElementById('task-list');
 	list.appendChild(container);
+}
+
+function removeTask(task) {
+	database.delete('tasks', task);
+	var div = document.getElementById(task);
+	div.parentElement.style.display = "none";
+	popupManager.remove("complete");
 }

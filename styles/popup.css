@@ -1,0 +1,20 @@
+.popup .overlay {
+    opacity: 0.5;
+    background: gainsboro;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.popup .content {
+    top: 0;
+    padding: 66px;
+    z-index: 2;
+    right: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+}
